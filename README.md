@@ -8,13 +8,13 @@ Installation
 ------------
 
 Copy `deploy.sh` into your Rails project, and commit it. Then rename the
-git remote for your production app to "production":
+git remote for your production app to "prod":
 
-    $ git remote rename heroku production
+    $ git remote rename heroku prod
 
 The reason you need to do this is that `deploy.sh` will only make
 backups of your Postgres database when deploying to a remote called
-"production". If you'd rather call your remote something else, just edit
+"prod". If you'd rather call your remote something else, just edit
 the script.
 
 You'll also want to [enable backups][] on your app, if you haven't
