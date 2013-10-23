@@ -46,14 +46,14 @@ show_undeployed_changes()
 
 backup_database()
 {
-    if [ "$REMOTE" = "production" ]; then
+    if [ "$REMOTE" = "prod" ]; then
         bundle exec heroku pgbackups:capture --expire --remote $REMOTE
     fi
 }
 
 deploy_changes()
 {
-    if [ "$REMOTE" = "production" ]; then
+    if [ "$REMOTE" = "prod" ]; then
         git push $REMOTE $BRANCH:master
     else
         git push -f $REMOTE $BRANCH:master
