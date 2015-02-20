@@ -2,24 +2,22 @@
 
 BRANCH="${BRANCH:-master}"
 
-# Run by typing (from the app root dir):   
+# Run by typing (from the app root dir):
 #    heroku-deploy-rails/deploy.sh prod
 # Add this line to your ~/.bash_profile, to be able to just type 'deploy prod' to run this script:
 #    alias deploy='./heroku-deploy-rails/deploy.sh'
 
-
-# Deploy script written as a shell script.
-# It is better than alternative Ruby scripts because:
+# This is a deploy script written as a shell script.
+# It is better than alternative Ruby deploy scripts because:
 # - faster: it doesn't have to load the ruby environment
 # - easier to read: less boilerplate code, so it is clearer to inspect the script to see what's going on
 
 # Presumptions:
 # - Using Git.
+# - Using localeapp gem and Localeapp.com for translations. And set up Heroku to sync (pull) new translations automatically from localeapp.com. See: http://magnemg.tumblr.com/post/109383033075/how-to-use-localeapp-com-with-heroku
 # - Local git remote for the production app is called "prod", if not then run in console:   git remote rename heroku prod
 # - SSH keys are set up correctly.
 # - No staging server. Because could use it like 'deploy staging' to deploy to a staging remote, if needed.
-# - Does not commit to origin, because we want that to be a separate process.
-# - Using PostgreSQL database with PG Backups Heroku addon. If not, then run this once:  heroku addons:add pgbackups:auto-month
 
 # Potential future updates:
 # - ensure_clean: Checking that there are no uncommitted files in your working copy. Basically a check you haven't forgotten anything and would need to deploy twice. Also ensures your uncommitted files won't be intertangled with merge conflicted files. Inspiration: https://gist.github.com/ahawkins/2237714
